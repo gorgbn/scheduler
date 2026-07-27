@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="/">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A new Flutter project.">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="schedule">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>schedule</title>
+  <link rel="manifest" href="manifest.json">
+  <!-- Google Identity Services (GSI) for Web -->
+  <meta name="google-signin-client_id" content="931164323171-4kgfn6dqpfe5c551usqtshflsivfjm7p.apps.googleusercontent.com">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <!-- Tesseract.js for Client-Side OCR -->
+  <script src='https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js'></script>
+</head>
+<body>
+  <!-- Web-only Google Sign-In button container -->
+  <div id="web-google-signin" style="position:fixed;z-index:2147483647;left:0;right:0;top:24px;display:none;justify-content:center;pointer-events:auto;">
+    <div id="g_id_onload"
+         data-client_id="931164323171-4kgfn6dqpfe5c551usqtshflsivfjm7p.apps.googleusercontent.com"
+         data-context="signin"
+         data-ux_mode="popup"
+         data-auto_select="false"
+         data-itp_support="true"
+         data-callback="handleCredentialResponse">
+    </div>
+    <div class="g_id_signin"
+         data-type="standard"
+         data-shape="rectangular"
+         data-theme="outline"
+         data-text="signin_with"
+         data-size="large"
+         data-logo_alignment="left">
+    </div>
+  </div>
+
+  <script>
+    function handleCredentialResponse(response) {
+      // Call the JS→Dart bridge if available with the ID token.
+      if (window.onGoogleCredential) {
+        try {
+          window.onGoogleCredential(response.credential);
+        } catch (e) {
+          console.error('Failed to pass credential to Dart:', e);
+        }
+      } else {
+        console.warn('onGoogleCredential is not registered');
+      }
+    }
+  </script>
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>
